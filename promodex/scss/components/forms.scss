@@ -1,0 +1,85 @@
+$form-color: #222 !default;
+$form-bg: #fff !default;
+$form-border: 2px solid #e8eaea !default;
+$form-border-radius: 2px !default;
+$form-height: auto !default;
+$form-padding-x: 20px !default;
+$form-font-size: 16px !default;
+$form-line-height: 1 !default;
+$form-margin-bottom: 8px !default;
+
+$form-label-color: #eaeef1 !default;
+$form-label-font-size: 14px !default;
+$form-label-margin-bottom: 4px !default;
+
+
+@mixin placeholder($color, $opacity, $font-size, $line-height) {
+    &::-webkit-input-placeholder {
+        color: $color;
+        opacity: $opacity;
+        font-size:font-size ;
+        line-height: $line-height;
+        @content;
+    }
+    &::-moz-placeholder {
+        color: $color;
+        opacity: $opacity;
+        font-size:font-size ;
+        line-height: $line-height;
+        @content;
+    }
+    &:-ms-input-placeholder {
+        color: $color;
+        opacity: $opacity;
+        font-size:font-size ;
+        line-height: $line-height;
+        @content;
+    }
+}
+
+@mixin form-variants($color, $bg, $border-color) {
+    color: $color;
+    background-color: $bg;
+    border-color: $border-color;
+}
+
+@mixin form-size($height, $padding, $font-size, $border-radius: $form-border-radius, $line-height: $form-line-height) {
+    $padding-y: ($height - ($font-size * $form-line-height)) / 2;
+    font-size: $font-size;
+    border-radius: $border-radius;
+    height: $height;
+    line-height: $line-height;
+    padding: $padding-y $padding;
+}
+
+.form {
+	&-group {
+		margin-bottom: $form-margin-bottom;
+        padding: 17px 18px;
+        color: #000;
+        opacity: 1;
+        font-size:16px ;
+        line-height: 24px;
+        font-weight: 300;
+         width: 100%;
+	}
+    &-control {
+        width: 100%;
+        display: block;
+        color: $form-color;
+        font-size: $form-font-size;
+        background-color: $form-bg;
+        border: $form-border;
+        border-radius: $form-border-radius;
+        height: $form-height;
+        line-height: $form-line-height;
+        padding: 17px 18px;
+      @include placeholder(#000, 1, 16px, 24px);
+    }
+    &-label {
+    	display: block;
+    	color: $form-label-color;
+    	font-size: $form-label-font-size;
+    	margin-bottom: $form-label-margin-bottom;
+    }
+}
